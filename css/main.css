@@ -1,0 +1,49 @@
+* {
+    padding:0;
+    margin:0;
+}
+body {
+    margin-right: auto;
+    margin-left: auto;
+    width:700;
+    min-width:700;
+    max-width:700;
+}
+header {
+    font-family:'DroidSerifRegular';
+    text-align: center;
+    padding:10px;
+    margin:10px;
+    width:700;
+    min-width:700;
+    max-width:700;
+}
+h1 {
+    padding: 10px;
+    margin:5px;
+}
+p {
+    padding: 20px;
+}
+aside input, button {
+    margin:10px;
+    padding: 5px;
+    text-align: center;
+}
+#recAlgo_kit {
+	position:absolute;
+	z-index: 4;
+	top:250px;
+	left:50%;
+    border:2px solid black;
+    width:700px;
+    height:400px;
+}
+#result {
+    border:2px solid green;
+    padding: 10px;
+    height:230px;
+    width:300px;
+    margin-top:-240px;
+    margin-left:350px;
+}

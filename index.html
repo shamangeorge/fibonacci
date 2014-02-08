@@ -1,0 +1,94 @@
+<!Doctype html>
+<html>
+
+<head>
+    <title>Fibonacci Algorithm Comparison in Javascript</title>
+    <script type="text/javascript" src="./js/Matrix.js"></script>
+    <script type="text/javascript" src="./js/fibs.js"></script>
+    <link type="text/css" rel='stylesheet' href="./css/main.css">
+    </script>
+    <link type="text/css" rel='stylesheet' href="./css/prism.css">
+    </script>
+    <link type="text/css" rel='stylesheet' href="https://cdn.fruitopology.com/fonts/fonts.css">
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>Fibonacci Algorithm Comparison in Javascript</h1>
+        <p>Welcome to the Fibonacci benchmark page. All algorithms written here have been written from scratch, yet there are only so many ways you can implement the fibonaccis so the code will be similar to other code you may have seen. The Matrix implementation used is a quick proof of concept class for this excercise</p>
+    </header>
+    <section id='recAlgo'>
+        <h1>The Recursive Algorithm</h1>
+        <pre>
+            <code class="language-javascript">
+        //Recursive
+
+        function fibRec(n) {
+            return function(n, a, b) {
+                return n > 0 ? arguments.callee(n - 1, b, a + b) : a;
+            }(n, 0, 1);
+        }
+
+        //Iterative
+
+        function fibIter(n) {
+            var
+            a = 0,
+                b = 1,
+                t;
+            while (n-- > 0) {
+                t = a;
+                a = b;
+                b += t;
+            }
+            return a;
+        }
+
+        //Matrix
+
+        function fibMat(n) {
+            //this is our constant matrix of multiplication
+            var M = new Matrix([
+                [1, 1],
+                [1, 0]
+            ]);
+            var m = M.exp(n);
+            return m.mtx[0][1];
+        }
+
+
+        // The Benchmark Timer
+        function benchLoop(Func, n) {
+            var start = new Date().getMilliseconds();
+            var val = Func(n);
+            var end = new Date().getMilliseconds();
+            var tm = end - start;
+            return 'Execution time for fib(' + n + ') = ' + val + ':<br> ' + Math.abs(tm) + 'ms<br>';
+        }
+            </code>
+        </pre>
+            <section id='recAlgo_kit'>
+                <aside>
+                    <p>Choose your number N (default = 50)</p>
+                    <input type='text' id='fibN'>
+                    <br>
+                    <button id='butN'>Calculate Nth Fibonacci Recursively</button>
+                    <br>
+                    <button id='butNIter'>Calculate Nth Fibonacci Iteratively</button>
+                    <br>
+                    <button id='butNMat'>Calculate Nth Fibonacci with Matrix Formula</button>
+                    <br>
+                    <button id='butNAll'>Run All tests</button>
+                    <br>
+                    <button onclick="stop()">Stop worker</button>
+                </aside>
+                <div id='result'>
+                </div>
+            </section>
+        <section>
+</body>
+<script type="text/javascript" src="./js/prism.js"></script>
+<script type="text/javascript" src="./js/main.js"></script>
+
+</html>
